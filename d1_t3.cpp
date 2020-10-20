@@ -20,6 +20,11 @@ int fn_dev(long long n){
 
 int main(){
     cin >> n;
-    cout << fn_dev(n);
+    cout << fn_dev(n) << endl;
+    while(n > (long long)fn_dev(n)){
+        n = (long long)fn_dev(n);
+    }
+    if(n == 1) cout << "true";
+    else cout << "false";
     return 0;
 }

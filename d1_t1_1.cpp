@@ -44,8 +44,17 @@ struct BigInteger{
 		return c;
 	}
 };
+ostream& operator << (ostream &out, const BigInteger& x) {
+	out << x.s.back();
+	for (int i = x.s.size() - 2; i >= 0; i--) {
+		char buf[20];
+		sprintf(buf, "%08d", x.s[i]);
+		for (int j = 0; j < strlen(buf); j++) out << buf[j];
+	}
+	return out;
+}
 
-const int MAXN = 100000 + 10;
+const int MAXN = 1000000 + 10;
 int n;
 BigInteger fib[MAXN];
 

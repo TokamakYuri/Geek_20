@@ -3,12 +3,14 @@
 
 using namespace std;
 
-int pos,n;
+long long n;
 
-int fn_dev(int n, int pos){
-    int ar_n[10],sum,cur;
+int fn_dev(long long n){
+    int sum = 0,cur,pos;
+    int ar_n[10] = {0,0,0,0,0,0,0,0,0,0};
+    pos = floor(log10(n));
     for(int i = 0; i <= pos; i++){
-        cur = n / (int)pow(10, i);
+        cur = n / (long long)pow(10, i);
         ar_n[cur] += 1;
     }
     for(int i = 1; i < 10; i++) sum = sum + i * i * ar_n[i];
@@ -17,7 +19,6 @@ int fn_dev(int n, int pos){
 
 int main(){
     cin >> n;
-    pos = floor(log10(n));
-    cout << fn_dev(n, pos);
+    cout << fn_dev(n);
     return 0;
 }

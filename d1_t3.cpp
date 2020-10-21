@@ -3,8 +3,13 @@
 
 using namespace std;
 
+struct nnum{
+    bool isHappy;
+    bool isRep;
+};
+
 long long n;
-bool ar_b[1000][2];
+nnum ar_b[1000];
 
 int fn_dev(long long n){
     int sum = 0,cur,pos;
@@ -18,17 +23,19 @@ int fn_dev(long long n){
     for(int i = 1; i < 10; i++) sum = sum + i * i * ar_n[i];
     return sum;
 }
-bool fn_happy(int n){
-    if (ar_b[n][1]) return 1;
-    ar_b[n][1] = 1;
-    if(fn_dev(n) == 1) return 0;
-    else return fn_happy(fn_dev(n));
+static bool fn_happy(int n){
+    int temp = fn_dev(n);
+    while(temp >= 1000) temp = fn_dev(temp);
+    if (ar_b[temp].isRep) return 0;
+    ar_b[temp].isRep = 1;
+    if(fn_dev(temp) == 1) return 1;
+    else return fn_happy(temp);
 }
 
 int main(){
-    for(int i = 1; i < 1000; i++) ar_b[i][0] = fn_happy(i);
+    for(int i = 1; i < 1000; i++) ar_b[i].isHappy = fn_happy(i);
     cin >> n;
-    if(!ar_b[(int)n - 1][0]) cout << "true";
+    if(ar_b[(int)n - 1].isHappy) cout << "true";
     else cout << "false";
     return 0;
 }

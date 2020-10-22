@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Define struct BigInteger
 struct BigInteger{
 	static const int BASE = 100000000;
 	static const int WIDTH = 8;
@@ -44,6 +45,7 @@ struct BigInteger{
 		return c;
 	}
 };
+//Overload ostream <<
 ostream& operator << (ostream &out, const BigInteger& x) {
 	out << x.s.back();
 	for (int i = x.s.size() - 2; i >= 0; i--) {
@@ -61,6 +63,7 @@ BigInteger fib[MAXN];
 int main(){
 	cin >> n;
 	fib[1] = fib[2] = 1;
+	//Calculate fib[n] (time complexity O(n))
 	for(int i = 3; i <= n; i++) fib[i] = fib[i - 1] + fib[i - 2];
 	cout << fib[n];
 }

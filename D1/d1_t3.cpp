@@ -11,6 +11,7 @@ struct nnum{
 long long n;
 nnum ar_b[1000];
 
+//Calculate spr
 int fn_dev(long long n){
     int sum = 0,cur,pos;
     int ar_n[10] = {0,0,0,0,0,0,0,0,0,0};
@@ -23,6 +24,7 @@ int fn_dev(long long n){
     for(int i = 1; i < 10; i++) sum = sum + i * i * ar_n[i];
     return sum;
 }
+// Judge is happy number
 static bool fn_happy(int n){
     int temp = fn_dev(n);
     while(temp >= 1000) temp = fn_dev(temp);

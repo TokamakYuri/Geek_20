@@ -33,9 +33,8 @@ static bool fn_happy(int n){
 }
 
 int main(){
-    for(int i = 1; i < 1000; i++) ar_b[i].isHappy = fn_happy(i);
     cin >> n;
-    if(ar_b[(int)n - 1].isHappy) cout << "true";
+    if(fn_happy(fn_dev(n))) cout << "true";
     else cout << "false";
     return 0;
 }
